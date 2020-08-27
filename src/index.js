@@ -24,6 +24,7 @@ document.getElementById("app").innerHTML = `
 //   }, 3000);
 // }
 
+/////////////////////////////
 getUserId().then(
   (userId) => {
     console.log(userId);
@@ -78,3 +79,13 @@ function getUserDetails(userId) {
     }, 500);
   });
 }
+
+////////////
+const getAlltheData = async () => {
+  const userId = await getUserId();
+  const details = await getUserDetails(userId);
+
+  console.log(`the user name of id with ${userId} is ${details.name}`);
+};
+
+getAlltheData();

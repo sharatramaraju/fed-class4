@@ -81,11 +81,25 @@ function getUserDetails(userId) {
 }
 
 ////////////
-const getAlltheData = async () => {
-  const userId = await getUserId();
-  const details = await getUserDetails(userId);
+// const getAlltheData = async () => {
+//   const userId = await getUserId();
+//   const details = await getUserDetails(userId);
 
-  console.log(`the user name of id with ${userId} is ${details.name}`);
-};
+//   console.log(`the user name of id with ${userId} is ${details.name}`);
+// };
 
-getAlltheData();
+// getAlltheData();
+
+////////
+
+async function getDataUsingFetch() {
+  const response = await fetch("https://gorest.co.in/public-api/users");
+
+  if (response.ok) {
+    console.log(await response.json());
+  } else {
+    console.log("Error");
+  }
+}
+
+getDataUsingFetch();

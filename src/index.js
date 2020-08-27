@@ -1,13 +1,7 @@
 import "./styles.css";
 
 document.getElementById("app").innerHTML = `
-<h1>Hello Vanilla!</h1>
-<div>
-  We use the same configuration as Parcel to bundle this sandbox, you can find more
-  info about Parcel 
-  <a href="https://parceljs.org" target="_blank" rel="noopener noreferrer">here</a>.
-</div>
-`;
+<h1>Hello Vanilla!</h1>`;
 
 // console.log(getSomeDataSynchronously());
 
@@ -30,25 +24,57 @@ document.getElementById("app").innerHTML = `
 //   }, 3000);
 // }
 
-getDataUsingPromise().then(
-  (data) => {
-    console.log(data);
+getUserId().then(
+  (userId) => {
+    console.log(userId);
+    getUserDetails(userId).then((userDetails) => {
+      console.log(userDetails);
+    });
   },
   (rejectReason) => {
     console.log(rejectReason);
   }
 );
 
-function getDataUsingPromise() {
+function getUserId() {
   console.log("Promise");
-  const shouldReject = Math.round(Math.random());
+  const shouldReject = false; //Math.round(Math.random());
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       if (shouldReject) {
         reject("Promize could not be fulfilled");
       } else {
-        resolve("Promize rezolved!");
+        resolve(2);
       }
-    }, 1000);
+    }, 500);
+  });
+}
+
+function getUserDetails(userId) {
+  console.log("Promise");
+  const shouldReject = false; //Math.round(Math.random());
+  const users = [
+    {
+      name: "Rod",
+      phone: 563885555
+    },
+    {
+      name: "Rod",
+      phone: 563885555
+    },
+    {
+      name: "Rod",
+      phone: 563885555
+    }
+  ];
+
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (shouldReject) {
+        reject("Promize could not be fulfilled");
+      } else {
+        resolve(users[userId]);
+      }
+    }, 500);
   });
 }
